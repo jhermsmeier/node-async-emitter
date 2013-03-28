@@ -1,0 +1,16 @@
+{
+  
+  "name": "emitter",
+  "version": "0.0.0",
+  
+  "main": [
+    "./emitter.js",
+    "./emitter.min.js"
+  ],
+  
+  "ignore": [],
+  
+  "dependencies": {},
+  "devDependencies": {}
+  
+}
