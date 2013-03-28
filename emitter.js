@@ -1,4 +1,3 @@
-
 /**
  * Emitter constructor
  */
@@ -34,7 +33,7 @@ Emitter.prototype = {
       this._events[ type ] = [ handler ]
     
     if( this._events[ type ].length > this._maxListeners ) {
-      if( !this._memLeakDetected ) {
+      if( this._maxListeners > 0 && !this._memLeakDetected ) {
         this._memLeakDetected = true
         console.warn(
           'WARNING: Possible event emitter memory leak detected.',
@@ -98,7 +97,7 @@ Emitter.prototype = {
   },
   
   listeners: function( type ) {
-    return ( this._events[ type ] ) ?
+    return this._events[ type ] ?
       this._events[ type ].slice() : []
   },
   
