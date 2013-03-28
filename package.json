@@ -1,0 +1,37 @@
+{
+  
+  "name": "emitter",
+  "version": "0.0.0",
+  "description": "Non-blocking event emitter",
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "http",
+    "server"
+  ],
+  
+  "author": {
+    "name": "Jonas Hermsmeier",
+    "email": "jhermsmeier@googlemail.com",
+    "url": "http://jhermsmeier.de"
+  },
+  
+  "contributors": [],
+  
+  "scripts": {
+    "test": "mocha"
+  },
+  
+  "main": "./emitter",
+  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhermsmeier/emitter.js.git"
+  },
+  
+  "dependencies" : {},
+  "devDependencies": {
+    "mocha": "*"
+  }
+  
+}
