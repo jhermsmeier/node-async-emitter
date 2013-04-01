@@ -111,13 +111,14 @@ Emitter.prototype = {
     }
     
     var argv = [].slice.call( arguments, 1 )
-    var handler, i, len = listeners.length
+    var i, len = listeners.length
     
     for( i = 0; i < len; i++ ) {
-      handler = listeners[i]
-      Emitter.nextTick( function() {
-        handler.apply( emitter, argv )
-      })
+      Emitter.nextTick(
+         function( handler ) {
+           handler.apply( this, argv )
+         }.bind( this, listeners[i] )
+       )
     }
     
     return true
