@@ -1,7 +1,7 @@
 {
   
   "name": "emitter",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Non-blocking event emitter",
   "license": "MIT",
   "keywords": [
