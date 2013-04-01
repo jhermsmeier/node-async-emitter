@@ -11,4 +11,18 @@ Given the nature of "events", one would think event emission is *always* asynchr
 $ bower install emitter
 ```
 
+## API
 
+- {Emitter} __emitter.on__( *string* __event__, *function* __handler__ )
+
+- {Emitter} __emitter.once__( *string* __event__, *function* __handler__ )
+
+- {Boolean} __emitter.emit__( *string* __event__, [arg1], [arg2], [...] )
+
+- {Emitter} __emitter.removeListener__( *string* __event__, *function* __handler__ )
+
+- {Emitter} __emitter.removeAllListeners__( *string* [event] )
+
+- {Emitter} __emitter.setMaxListeners__( *number* __value__ )
+
+- {Array} __emitter.listeners__( *string* __event__ )
