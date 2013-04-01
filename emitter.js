@@ -11,11 +11,21 @@ function Emitter() {
 if( typeof module !== 'undefined' )
   module.exports = Emitter
 
-// Support both, setTimeout() and process.nextTick()
+/**
+ * Support both, setTimeout() and process.nextTick()
+ * @type {Function}
+ */
 Emitter.nextTick = (
   typeof process !== 'undefined' &&
   typeof process.nextTick === 'function'
 ) ? process.nextTick.bind( process ) : setTimeout.bind( this )
+
+/**
+ * Determines if Emitters warn
+ * about potential memory leaks
+ * @type {Boolean}
+ */
+Emitter.warn = true
 
 /**
  * Emitter prototype
@@ -23,6 +33,12 @@ Emitter.nextTick = (
  */
 Emitter.prototype = {
   
+  /**
+   * [on description]
+   * @param  {String}   type
+   * @param  {Function} handler
+   * @return {Emitter}
+   */
   on: function( type, handler ) {
     
     if( typeof handler !== 'function' )
@@ -32,7 +48,7 @@ Emitter.prototype = {
       this._events[ type ].push( handler ) :
       this._events[ type ] = [ handler ]
     
-    if( this._events[ type ].length > this._maxListeners ) {
+    if( Emitter.warn && this._events[ type ].length > this._maxListeners ) {
       if( this._maxListeners > 0 && !this._memLeakDetected ) {
         this._memLeakDetected = true
         console.warn(
@@ -48,6 +64,12 @@ Emitter.prototype = {
     
   },
   
+  /**
+   * [once description]
+   * @param  {String}   type
+   * @param  {Function} handler
+   * @return {Emitter}
+   */
   once: function( type, handler ) {
     
     if( typeof handler !== 'function' )
@@ -66,6 +88,11 @@ Emitter.prototype = {
     
   },
   
+  /**
+   * [emit description]
+   * @param  {String}  type
+   * @return {Boolean}
+   */
   emit: function( type ) {
     
     var emitter = this
@@ -96,11 +123,21 @@ Emitter.prototype = {
     
   },
   
+  /**
+   * [listeners description]
+   * @param  {String} type
+   * @return {Array}
+   */
   listeners: function( type ) {
     return this._events[ type ] ?
       this._events[ type ].slice() : []
   },
   
+  /**
+   * [setMaxListeners description]
+   * @param {Number}   value
+   * @return {Emitter}
+   */
   setMaxListeners: function( value ) {
     
     if( typeof value !== 'number' )
@@ -112,6 +149,12 @@ Emitter.prototype = {
     
   },
   
+  /**
+   * [removeListener description]
+   * @param  {String}   type
+   * @param  {Function} handler
+   * @return {Emitter}
+   */
   removeListener: function( type, handler ) {
     
     if( typeof handler !== 'function' )
@@ -133,6 +176,11 @@ Emitter.prototype = {
     
   },
   
+  /**
+   * [removeAllListeners description]
+   * @param  {String}  type
+   * @return {Emitter}
+   */
   removeAllListeners: function( type ) {
     
     if( arguments.length === 0 ) {
