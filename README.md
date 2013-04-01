@@ -13,6 +13,14 @@ $ bower install emitter
 
 ## API
 
+### Class Properties
+
+- *function* __Emitter.nextTick__
+
+- *boolean* __Emitter.warn__
+
+### Instance Methods
+
 - {Emitter} __emitter.on__( *string* __event__, *function* __handler__ )
 
 - {Emitter} __emitter.once__( *string* __event__, *function* __handler__ )
