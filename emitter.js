@@ -34,7 +34,7 @@ Emitter.warn = true
 Emitter.prototype = {
   
   /**
-   * [on description]
+   * Adds a listener for the specified event
    * @param  {String}   type
    * @param  {Function} handler
    * @return {Emitter}
@@ -65,7 +65,7 @@ Emitter.prototype = {
   },
   
   /**
-   * [once description]
+   * Adds a one time listener for the specified event
    * @param  {String}   type
    * @param  {Function} handler
    * @return {Emitter}
@@ -89,7 +89,8 @@ Emitter.prototype = {
   },
   
   /**
-   * [emit description]
+   * Execute each of the listeners in order
+   * with the supplied arguments
    * @param  {String}  type
    * @return {Boolean}
    */
@@ -124,7 +125,8 @@ Emitter.prototype = {
   },
   
   /**
-   * [listeners description]
+   * Returns an arraz of listeners
+   * for the specified event
    * @param  {String} type
    * @return {Array}
    */
@@ -134,7 +136,9 @@ Emitter.prototype = {
   },
   
   /**
-   * [setMaxListeners description]
+   * Sets the number of listeners that can
+   * be added before a potential memory leak
+   * warning is issued. Set to zero to disable.
    * @param {Number}   value
    * @return {Emitter}
    */
@@ -150,7 +154,7 @@ Emitter.prototype = {
   },
   
   /**
-   * [removeListener description]
+   * Remove a listener for the specified event
    * @param  {String}   type
    * @param  {Function} handler
    * @return {Emitter}
@@ -177,7 +181,8 @@ Emitter.prototype = {
   },
   
   /**
-   * [removeAllListeners description]
+   * Removes all listeners,
+   * or those of the specified event
    * @param  {String}  type
    * @return {Emitter}
    */
