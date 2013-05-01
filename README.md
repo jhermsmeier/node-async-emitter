@@ -27,6 +27,8 @@ $ bower install emitter
 
 - {Boolean} __emitter.emit__( *string* __event__, [arg1], [arg2], [...] )
 
+- {Boolean} __emitter.emitSync__( *string* __event__, [arg1], [arg2], [...] )
+
 - {Emitter} __emitter.removeListener__( *string* __event__, *function* __handler__ )
 
 - {Emitter} __emitter.removeAllListeners__( *string* [event] )
