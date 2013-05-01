@@ -126,6 +126,39 @@ Emitter.prototype = {
   },
   
   /**
+   * Execute each of the listeners in order
+   * with the supplied arguments *synchronously*
+   * @param  {String}  type
+   * @return {Boolean}
+   */
+  emitSync: function( type ) {
+    
+    var emitter = this
+    var listeners = this._events[ type ]
+    
+    if( type === 'error' && !listeners ) {
+      if( !this._events.error ) {
+        throw !( arguments[1] instanceof Error ) ?
+          new TypeError( 'Unhandled "error" event.' ) :
+          arguments[1]
+        return false
+      }
+    } else if( !listeners ) {
+      return false
+    }
+    
+    var argv = [].slice.call( arguments, 1 )
+    var i, len = listeners.length
+    
+    for( i = 0; i < len; i++ ) {
+      listeners[i].apply( this, argv )
+    }
+    
+    return true
+    
+  },
+  
+  /**
    * Returns an arraz of listeners
    * for the specified event
    * @param  {String} type
