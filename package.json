@@ -5,9 +5,8 @@
   "description": "Non-blocking event emitter",
   "license": "MIT",
   "keywords": [
-    "cli",
-    "http",
-    "server"
+    "async", "asynchronous",
+    "event", "emitter"
   ],
   
   "author": {
