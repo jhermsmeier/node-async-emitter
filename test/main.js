@@ -40,6 +40,27 @@ describe( 'Emitter', function() {
       
     })
     
+    it( 'should support the EventListener interface', function() {
+      
+      var emitter = new Emitter()
+      var handled = false
+      var object = {
+        handleEvent: function() {
+          handled = true
+        }
+      }
+      
+      emitter.on( 'interface', object )
+      emitter.emitSync( 'interface' )
+      
+      assert.ok( handled )
+      
+      emitter.removeListener( 'interface', object )
+      
+      assert.ok( !emitter._events[ 'interface' ] )
+      
+    })
+    
   })
   
 })

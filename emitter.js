@@ -41,8 +41,13 @@ Emitter.prototype = {
    */
   on: function( type, handler ) {
     
-    if( typeof handler !== 'function' )
+    if( handler === void 0 || handler === null ) {
+      throw new Error( 'Missing argument "handler"' )
+    }
+    
+    if( typeof handler !== 'function' && typeof handler.handleEvent !== 'function' ) {
       throw new TypeError( 'Handler must be a function.' )
+    }
     
     this._events[ type ] ?
       this._events[ type ].push( handler ) :
@@ -77,7 +82,9 @@ Emitter.prototype = {
     
     function wrapper() {
       this.removeListener( type, wrapper )
-      handler.apply( this, arguments )
+      typeof handler !== 'function'
+        ? handler.handleEvent.apply( handler, arguments )
+        : handler.apply( this, arguments )
     }
     
     this._events[ type ] ?
@@ -115,9 +122,11 @@ Emitter.prototype = {
     
     for( i = 0; i < len; i++ ) {
       Emitter.nextTick(
-         function( handler ) {
-           handler.apply( this, argv )
-         }.bind( this, listeners[i] )
+         function( handler, argv ) {
+           typeof handler !== 'function'
+             ? handler.handleEvent.apply( handler, argv )
+             : handler.apply( this, argv )
+         }.bind( this, listeners[i], argv )
        )
     }
     
@@ -148,10 +157,13 @@ Emitter.prototype = {
     }
     
     var argv = [].slice.call( arguments, 1 )
-    var i, len = listeners.length
+    var handler, i, len = listeners.length
     
     for( i = 0; i < len; i++ ) {
-      listeners[i].apply( this, argv )
+      handler = listeners[i]
+      typeof handler !== 'function'
+        ? handler.handleEvent.apply( handler, arguments )
+        : handler.apply( this, arguments )
     }
     
     return true
@@ -194,9 +206,6 @@ Emitter.prototype = {
    * @return {Emitter}
    */
   removeListener: function( type, handler ) {
-    
-    if( typeof handler !== 'function' )
-      throw new TypeError( 'Handler must be a function.' )
     
     var handlers = this._events[ type ]
     var position = handlers.indexOf( handler )
