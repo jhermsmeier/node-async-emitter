@@ -1,7 +1,7 @@
 {
   
   "name": "async-emitter",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Non-blocking event emitter",
   "license": "MIT",
   "keywords": [
@@ -11,7 +11,7 @@
   
   "author": {
     "name": "Jonas Hermsmeier",
-    "email": "jhermsmeier@googlemail.com",
+    "email": "jhermsmeier@gmail.com",
     "url": "http://jhermsmeier.de"
   },
   
@@ -21,7 +21,7 @@
     "test": "mocha"
   },
   
-  "main": "./emitter",
+  "main": "emitter",
   
   "repository": {
     "type": "git",
