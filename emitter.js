@@ -111,7 +111,7 @@ Emitter.prototype = {
     if( type === 'error' && !listeners ) {
       if( !this._events.error ) {
         throw !( arguments[1] instanceof Error ) ?
-          new TypeError( 'Unhandled "error" event.' ) :
+          new Error( 'Unhandled "error" event.' ) :
           arguments[1]
         return false
       }
@@ -150,7 +150,7 @@ Emitter.prototype = {
     if( type === 'error' && !listeners ) {
       if( !this._events.error ) {
         throw !( arguments[1] instanceof Error ) ?
-          new TypeError( 'Unhandled "error" event.' ) :
+          new Error( 'Unhandled "error" event.' ) :
           arguments[1]
         return false
       }
