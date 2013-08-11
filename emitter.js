@@ -12,13 +12,15 @@ if( typeof module !== 'undefined' )
   module.exports = Emitter
 
 /**
- * Support both, setTimeout() and process.nextTick()
+ * Support for setTimeout(), nextTick() and setImmediate()
  * @type {Function}
  */
-Emitter.nextTick = (
-  typeof process !== 'undefined' &&
-  typeof process.nextTick === 'function'
-) ? process.nextTick.bind( process ) : setTimeout.bind( this )
+if( typeof setImmediate === 'function' )
+  Emitter.nextTick = setImmediate.bind( this )
+else if( typeof process !== 'undefined' && process.nextTick )
+  Emitter.nextTick = process.nextTick.bind( process )
+else
+  Emitter.nextTick = setTimeout.bind( this )
 
 /**
  * Determines if Emitters warn
