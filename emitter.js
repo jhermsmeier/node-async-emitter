@@ -77,7 +77,10 @@ Emitter.prototype = {
    */
   once: function( type, handler ) {
     
-    if( typeof handler !== 'function' )
+    if( handler === void 0 || handler === null )
+      throw new Error( 'Missing argument "handler"' )
+    
+    if( typeof handler !== 'function' && typeof handler.handleEvent !== 'function' )
       throw new TypeError( 'Handler must be a function.' )
     
     function wrapper() {
