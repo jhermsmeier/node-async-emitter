@@ -43,13 +43,11 @@ Emitter.prototype = {
    */
   on: function( type, handler ) {
     
-    if( handler === void 0 || handler === null ) {
+    if( handler === void 0 || handler === null )
       throw new Error( 'Missing argument "handler"' )
-    }
     
-    if( typeof handler !== 'function' && typeof handler.handleEvent !== 'function' ) {
+    if( typeof handler !== 'function' && typeof handler.handleEvent !== 'function' )
       throw new TypeError( 'Handler must be a function.' )
-    }
     
     this._events[ type ] ?
       this._events[ type ].push( handler ) :
@@ -173,7 +171,7 @@ Emitter.prototype = {
   },
   
   /**
-   * Returns an arraz of listeners
+   * Returns an array of listeners
    * for the specified event
    * @param  {String} type
    * @return {Array}
