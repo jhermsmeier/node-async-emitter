@@ -35,6 +35,8 @@ Emitter.warn = true
  */
 Emitter.prototype = {
   
+  constructor: Emitter,
+  
   /**
    * Adds a listener for the specified event
    * @param  {String}   type
