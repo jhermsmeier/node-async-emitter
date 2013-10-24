@@ -124,14 +124,16 @@ Emitter.prototype = {
     var argv = [].slice.call( arguments, 1 )
     var i, len = listeners.length
     
+    function fire( handler, argv ) {
+      typeof handler !== 'function' ?
+        handler.handleEvent.apply( handler, argv ) :
+        handler.apply( this, argv )
+    }
+    
     for( i = 0; i < len; i++ ) {
       Emitter.nextTick(
-         function( handler, argv ) {
-           typeof handler !== 'function'
-             ? handler.handleEvent.apply( handler, argv )
-             : handler.apply( this, argv )
-         }.bind( this, listeners[i], argv )
-       )
+        fire.bind( this, listeners[i], argv )
+      )
     }
     
     return true
