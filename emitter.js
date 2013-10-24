@@ -116,7 +116,6 @@ Emitter.prototype = {
         throw !( arguments[1] instanceof Error ) ?
           new Error( 'Unhandled "error" event.' ) :
           arguments[1]
-        return false
       }
     } else if( !listeners ) {
       return false
@@ -155,7 +154,6 @@ Emitter.prototype = {
         throw !( arguments[1] instanceof Error ) ?
           new Error( 'Unhandled "error" event.' ) :
           arguments[1]
-        return false
       }
     } else if( !listeners ) {
       return false
