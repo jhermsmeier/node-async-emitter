@@ -167,8 +167,8 @@ Emitter.prototype = {
     for( i = 0; i < len; i++ ) {
       handler = listeners[i]
       typeof handler !== 'function'
-        ? handler.handleEvent.apply( handler, arguments )
-        : handler.apply( this, arguments )
+        ? handler.handleEvent.apply( handler, argv )
+        : handler.apply( this, argv )
     }
     
     return true
