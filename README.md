@@ -48,3 +48,7 @@ $ bower install emitter
 - {Emitter} __emitter.setMaxListeners__( *number* __value__ )
 
 - {Array} __emitter.listeners__( *string* __event__ )
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jhermsmeier/emitter.js/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
