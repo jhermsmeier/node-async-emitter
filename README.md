@@ -8,14 +8,16 @@ Looking at most implementations; that's not the case. This fixes it by running e
 handler with setTimeout/nextTick.
 
 ## Install with [npm](https://npmjs.org/)
-
 ```shell
 $ npm install async-emitter
 ```
 
+## Install via [component](http://github.com/component/)
+```shell
+$ component install jhermsmeier/emitter.js
+```
 
 ## Install with [bower](http://twitter.github.com/bower/)
-
 ```shell
 $ bower install emitter
 ```
