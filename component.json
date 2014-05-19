@@ -2,7 +2,7 @@
   "name": "emitter",
   "repo": "jhermsmeier/emitter.js",
   "description": "Asynchronous EventEmitter",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "keywords": [
     "async", "asynchronous",
     "event", "emitter"
