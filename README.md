@@ -2,7 +2,7 @@
 [![npm](https://img.shields.io/npm/v/async-emitter.svg?style=flat-square)](https://npmjs.com/package/async-emitter)
 [![npm license](https://img.shields.io/npm/l/async-emitter.svg?style=flat-square)](https://npmjs.com/package/async-emitter)
 [![npm downloads](https://img.shields.io/npm/dm/async-emitter.svg?style=flat-square)](https://npmjs.com/package/async-emitter)
-[![build status](https://img.shields.io/travis/jhermsmeier/emitter.js.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/emitter.js)
+[![build status](https://img.shields.io/travis/jhermsmeier/node-async-emitter.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-async-emitter)
 
 Non-blocking event emitter
 
